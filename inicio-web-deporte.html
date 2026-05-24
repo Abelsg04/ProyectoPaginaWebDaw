@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenido a WorkOut, tu tienda de confianza para equipamiento deportivo de alta calidad de fútbol, baloncesto y running.">
+    <title>WorkOut | Tu tienda de equipamiento deportivo</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+<header>
+        <nav>
+            <ul>
+                <li><a href="seccion-futbol.html">Fútbol</a></li>
+                <li><a href="seccion-baloncesto.html">Baloncesto</a></li>
+                <li><a href="seccion-running.html">Running</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="cart-container" title="Ver mi cesta">
+                🛒
+                <span id="cart-count" class="cart-badge">0</span>
+            </div>
+            
+            <div class="logo-container">
+                <a href="inicio-web-deporte.html">
+                    <img src="FotosWeb/Logo1.webp" alt="Logo de la tienda deportiva WorkOut" loading="lazy">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio">
+        <h1>Bienvenido a WorkOut</h1>
+        <h2>Tu tienda de confianza para equipamiento deportivo de alta calidad.</h2>
+        <p>Selecciona una categoría en el menú superior para empezar.</p>
+        
+        <div class="carousel-container">
+
+            <div class="mySlides fade">
+                <img src="FotosWeb/carruselseccionbaloncesto.webp" alt="Artículos y ropa de baloncesto en oferta"  loading="lazy">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="FotosWeb/ofertasnavidad.webp" alt="Ofertas especiales de navidad en equipamiento deportivo" loading="lazy">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="FotosWeb/zapatillasrunning.webp" alt="Zapatillas de running de última generación" loading="lazy">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+    </section>
+
+    <script>
+        let slideIndex = 0;
+        let slideInterval;
+
+        showSlidesAuto(); // Inicia movimiento automático
+
+        function plusSlides(n) {
+            clearTimeout(slideInterval); // Pausa el automático al hacer clic
+            showSlidesManual(slideIndex += n);
+        }
+
+        function showSlidesManual(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+            slides[slideIndex - 1].style.display = "block";
+            slideInterval = setTimeout(showSlidesAuto, 4000); // Reinicia automático
+        }
+
+        function showSlidesAuto() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            slideInterval = setTimeout(showSlidesAuto, 4000); // Cambia cada 4 seg
+        }
+    </script>
+<footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre WorkOut</h3>
+                <p>Tu tienda de confianza para equipamiento deportivo de alta calidad. Especialistas en fútbol, baloncesto y running desde 2026.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Envíos y Entregas</a></li>
+                    <li><a href="#">Cambios y Devoluciones</a></li>
+                    <li><a href="#">Guía de Tallas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 WorkOut Deportes. Proyecto académico simulado.</p>
+        </div>
+    </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let cartCount = parseInt(localStorage.getItem('workout_cart_count')) || 0;
+        const cartBadge = document.getElementById('cart-count');
+        
+        const actualizarCesta = () => {
+            if (cartBadge) {
+                cartBadge.textContent = cartCount;
+                if (cartCount > 0) {
+                    cartBadge.style.display = 'block';
+                } else {
+                    cartBadge.style.display = 'none';
+                }
+            }
+        };
+        
+        actualizarCesta();
+
+        const buyButtons = document.querySelectorAll('.product-card button');
+        
+        buyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                cartCount++;
+                localStorage.setItem('workout_cart_count', cartCount);
+                actualizarCesta();
+                
+                const originalText = button.textContent;
+                const originalColor = button.style.backgroundColor;
+                
+                button.textContent = "¡Añadido! ✔";
+                button.style.backgroundColor = "#28a745";
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = originalColor;
+                }, 1000);
+            });
+        });
+
+        const cartContainer = document.querySelector('.cart-container');
+        if (cartContainer) {
+            cartContainer.addEventListener('click', () => {
+                if (cartCount > 0) {
+                    if (confirm('¿Quieres vaciar la cesta de la compra?')) {
+                        cartCount = 0;
+                        localStorage.setItem('workout_cart_count', 0);
+                        actualizarCesta();
+                    }
+                } else {
+                    alert('La cesta ya está vacía.');
+                }
+            });
+        }
+    });
+</script>
+</body>
+
+</html>

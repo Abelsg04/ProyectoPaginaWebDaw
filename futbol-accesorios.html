@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Completa tu equipación con accesorios de fútbol de alta calidad. Guantes de portero, balones oficiales y espinilleras protegidas.">
+    <title>Accesorios de Fútbol | WorkOut</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="seccion-futbol.html">Fútbol</a></li>
+                <li><a href="seccion-baloncesto.html">Baloncesto</a></li>
+                <li><a href="seccion-running.html">Running</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <div class="cart-container" title="Ver mi cesta">
+                🛒
+                <span id="cart-count" class="cart-badge">0</span>
+            </div>
+            
+            <div class="logo-container">
+                <a href="inicio-web-deporte.html">
+                    <img src="FotosWeb/Logo1.webp" alt="Logo de la tienda deportiva WorkOut" loading="lazy">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="futbol-accesorios">
+        <h1>Accesorios de Fútbol</h1>
+        <p>Catálogo de accesorios disponibles:</p>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="FotosWeb/GuantesFutbol.webp" alt="Guantes de portero profesionales con agarre de látex" loading="lazy">
+                <h3>Guantes de fútbol</h3>
+                <p class="price">29,95€</p>
+                <button>Comprar</button>
+            </div>
+
+            <div class="product-card">
+                <img src="FotosWeb/BalonSeleccionEspañola.webp" alt="Balón de fútbol oficial de la selección española" loading="lazy">
+                <h3>Balón selección ES</h3>
+                <p class="price">24.99€</p>
+                <button>Comprar</button>
+            </div>
+
+            <div class="product-card">
+                <img src="FotosWeb/EspinillerasFutbol.webp" alt="Espinilleras rígidas de fútbol con protección de tobillo" loading="lazy">
+                <h3>Espinilleras</h3>
+                <p class="price">45.00€</p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <br><br>
+        <a href="seccion-futbol.html">⬅ Volver a categorías de Fútbol</a>
+    </section>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre WorkOut</h3>
+                <p>Tu tienda de confianza para equipamiento deportivo de alta calidad. Especialistas en fútbol, baloncesto y running desde 2026.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Envíos y Entregas</a></li>
+                    <li><a href="#">Cambios y Devoluciones</a></li>
+                    <li><a href="#">Guía de Tallas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 WorkOut Deportes. Proyecto académico simulado.</p>
+        </div>
+    </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let cartCount = parseInt(localStorage.getItem('workout_cart_count')) || 0;
+        const cartBadge = document.getElementById('cart-count');
+        
+        const actualizarCesta = () => {
+            if (cartBadge) {
+                cartBadge.textContent = cartCount;
+                if (cartCount > 0) {
+                    cartBadge.style.display = 'block';
+                } else {
+                    cartBadge.style.display = 'none';
+                }
+            }
+        };
+        
+        actualizarCesta();
+
+        const buyButtons = document.querySelectorAll('.product-card button');
+        
+        buyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                cartCount++;
+                localStorage.setItem('workout_cart_count', cartCount);
+                actualizarCesta();
+                
+                const originalText = button.textContent;
+                const originalColor = button.style.backgroundColor;
+                
+                button.textContent = "¡Añadido! ✔";
+                button.style.backgroundColor = "#28a745";
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = originalColor;
+                }, 1000);
+            });
+        });
+
+        const cartContainer = document.querySelector('.cart-container');
+        if (cartContainer) {
+            cartContainer.addEventListener('click', () => {
+                if (cartCount > 0) {
+                    if (confirm('¿Quieres vaciar la cesta de la compra?')) {
+                        cartCount = 0;
+                        localStorage.setItem('workout_cart_count', 0);
+                        actualizarCesta();
+                    }
+                } else {
+                    alert('La cesta ya está vacía.');
+                }
+            });
+        }
+    });
+</script>
+</body>
+
+</html>
