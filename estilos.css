@@ -353,3 +353,69 @@ p {
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     display: none; /* Añadido para que empiece invisible */
 }
+
+/* =========================================
+   DISEÑO RESPONSIVE (MÓVILES Y TABLETS)
+   ========================================= */
+
+/* 1. Hacemos que todas las imágenes sean flexibles y no se salgan de la pantalla */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 2. Reglas que solo se aplican si la pantalla es menor a 768px (móviles y tablets pequeñas) */
+@media screen and (max-width: 768px) {
+    
+    /* Centramos el título principal y el logo */
+    header {
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Hacemos que el menú de navegación se ponga en vertical en vez de horizontal */
+    header nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        gap: 15px;
+    }
+
+    header nav ul li {
+        margin: 0;
+    }
+
+    /* Reducimos el tamaño de las letras gigantes para que no se corten */
+    h1 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin: 15px 10px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        text-align: center;
+        margin: 10px;
+    }
+
+    /* Convertimos las cuadrículas de productos a una sola columna */
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    /* Si usaste contenedores (divs) para los productos, esto los pone en 1 columna */
+    div {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* Ajustamos los márgenes del texto para que no toque los bordes del móvil */
+    p {
+        padding: 0 15px;
+        text-align: center;
+    }
+}
