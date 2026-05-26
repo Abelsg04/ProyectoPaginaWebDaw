@@ -2,3 +2,5 @@ User-agent: *
 Disallow: /admin/
 Disallow: /privado/
 Allow: / 
+
+Sitemap: https://abelsg04.github.io/ProyectoPaginaWebDaw/sitemap.xml
