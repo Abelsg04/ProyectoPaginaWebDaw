@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+  <!-- Página Principal -->
   <url>
-    <loc>https://miweb.com/inicio-web-deporte.html</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/</loc>
+  </url>
+  <url>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/index.html</loc>
   </url>
 
+  <!-- Sección Fútbol -->
   <url>
-    <loc>https://miweb.com/seccion-futbol.html</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/seccion-futbol.html</loc>
+  </url>
+  <url>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/futbol-ropa.html</loc>
+  </url>
+  <url>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/futbol-accesorios.html</loc>
   </url>
 
+  <!-- Sección Baloncesto -->
   <url>
-    <loc>https://miweb.com/futbol-ropa.html</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/seccion-baloncesto.html</loc>
   </url>
   <url>
-    <loc>https://miweb.com/futbol-accesorios.html</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/baloncesto-ropa.html</loc>
   </url>
-
   <url>
-    <loc>https://miweb.com/seccion-baloncesto.html</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/baloncesto-accesorios.html</loc>
   </url>
 
+  <!-- Sección Running -->
   <url>
-    <loc>https://miweb.com/baloncesto-ropa.html</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/seccion-running.html</loc>
   </url>
   <url>
-    <loc>https://miweb.com/baloncesto-accesorios.html</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/running-ropa.html</loc>
   </url>
-
+  <url>
+    <loc>https://abelsg04.github.io/ProyectoPaginaWebDaw/running-accesorios.html</loc>
+  </url>
 </urlset>
